@@ -15,7 +15,7 @@ def health_check():
 
 @app.post("/predict")
 def predict(data: SensorInput):
-    # Placeholder prediction (0.15)
+    # Placeholder prediction (0.15).
     risk = 0.15
     return {
         "failure_probability": risk,
