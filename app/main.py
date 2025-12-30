@@ -1,23 +1,26 @@
 from fastapi import FastAPI
-from pydantic import BaseModel
+from app.model import predict_failure
+from app.schemas import SensorInput
 
 app = FastAPI(title="Predictive Maintenance API")
 
-class SensorInput(BaseModel):
-    temperature: float
-    vibration: float
-    rpm: int
-    torque: float
-
 @app.get("/")
 def health_check():
-    return {"status": "running"}
+    return {"status": "API running"}
 
 @app.post("/predict")
 def predict(data: SensorInput):
-    # Placeholder prediction (0.15).
-    risk = 0.15
+    features = [
+        data.air_temperature_k,
+        data.process_temperature_k,
+        data.rotational_speed_rpm,
+        data.torque_nm,
+        data.tool_wear_min
+    ]
+
+    prediction = predict_failure(features)
+
     return {
-        "failure_probability": risk,
-        "status": "NORMAL"
+        "failure_prediction": int(prediction),
+        "status": "FAILURE" if prediction == 1 else "NORMAL"
     }
