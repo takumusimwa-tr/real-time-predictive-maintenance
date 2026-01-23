@@ -8,7 +8,7 @@ model = joblib.load(MODEL_PATH)
 
 def predict_failure(features):
     """
-    features: list or array of input values
+    features: list of 5 sensor values
     """
     prediction = model.predict([features])
     return int(prediction[0])
