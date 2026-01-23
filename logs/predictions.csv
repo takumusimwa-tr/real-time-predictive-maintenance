@@ -1,0 +1,2 @@
+timestamp,air_temperature,process_temperature,rotational_speed,torque,tool_wear,prediction
+2026-01-23T21:27:27.590310,298.5,310.2,1500.0,45.0,120,0

@@ -1,8 +1,8 @@
 from pydantic import BaseModel
 
 class SensorInput(BaseModel):
-    air_temperature_k: float
-    process_temperature_k: float
-    rotational_speed_rpm: float
-    torque_nm: float
-    tool_wear_min: float
+    air_temperature: float
+    process_temperature: float
+    rotational_speed: float
+    torque: float
+    tool_wear: int
